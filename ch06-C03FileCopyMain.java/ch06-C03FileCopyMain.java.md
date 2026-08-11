@@ -1,8 +1,11 @@
-<empty-block/>
 #### class 생성
+
 ![](images/image1.png)
+
 #### 카피 txt
+
 ![](images/image2.png)
+
 #### 코드 실습
 ```javascript
 C:\Fullstack~~\Fullstack_Java\JAVA03\src\Ch06>cd ..
@@ -44,8 +47,9 @@ HELLOWORLD
 HELLOWORLD
 HELLOWORLD
 ```
-<empty-block/>
+
 #### C07FileCopyMain
+
 ![](images/image3.png)
 ```javascript
 C:\Fullstack~~\Fullstack_Java\JAVA03\src\Ch06>cd ..
@@ -54,4 +58,3 @@ C:\Fullstack~~\Fullstack_Java\JAVA03\src>javac Ch06\C07FileCopyMain.java
 
 C:\Fullstack~~\Fullstack_Java\JAVA03\src>java Ch06.C07FileCopyMain test.pdf copy.pdf
 ```
-<empty-block/>

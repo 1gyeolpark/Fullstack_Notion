@@ -19,148 +19,281 @@
 </body>
 </html>
 ```
-<empty-block/>
+
 ---
-<empty-block/>
+
 ## 이론으로 이동
+
 ### Scope(스코프)<br>: 변수&함수 접근 범위
+
 <table header-row="false" header-column="true">
+
 <colgroup>
+
 <col width="239.66666666666666">
+
 <col width="439.65625">
+
 </colgroup>
+
 <tr color="gray_bg">
+
 <td>스코프</td>
+
 <td>특징</td>
+
 </tr>
+
 <tr>
+
 <td>글로벌 스코프(Global Scope)</td>
+
 <td>전역 스코프. 코드 내라면 모두 접근 가능</td>
+
 </tr>
+
 <tr>
+
 <td>함수 스코프(Function Scope)</td>
+
 <td>지역 스코프. 선언된 함수 안에서만 접근 가능<span color="gray"> —\> var 해당</span></td>
+
 </tr>
+
 <tr>
+
 <td>블록 레벨 스코프(Block Level Scope)</td>
+
 <td>지역 스코프. 블록\{\} 안에서만 접근 가능<span color="gray"> —\> let, const 해당</span></td>
+
 </tr>
+
 <tr>
+
 <td>모듈 스코프(Module Scope)</td>
+
 <td>지역 스코프. 모듈 내부에서만 접근 가능하며, 다른 모듈에서 접근하려면 export / import를 사용해야 한다.</td>
+
 </tr>
+
 <tr>
+
 <td>렉시컬 스코프(Lexical Scope)</td>
+
 <td>정적 스코프. 함수 호출 위치가 아닌, 함수 정의 위치의 상위 스코프를 상속하는 규칙이다.</td>
+
 </tr>
+
 <tr>
+
 <td>스코프 체인(Scope Chain)</td>
+
 <td>변수가 함수 내부에 존재하지 않으면 상위(외부)로 올라가며 찾을 수 있다. 연결고리를 따라 간다고 보면 된다.<br><span color="gray">내부→외부 가능 / 외부 → 내부 불가</span></td>
+
 </tr>
+
 </table>
+
 ### closure(클로저) \*\*\*좀더정리<br>: 함수 선언 시 환경 기억/참조
+
 > 함수 선언 당시의 환경을 기억해 함수가 실행 된 이후에도, 외부에서 호출되더라도 접근해 참조할 수 있다. 데이터 은닉, 상태 관리 등에 사용한다.
-<empty-block/>
+
 ### CallBack(콜백)함수 \*\*정리필요
+
 > .
-<empty-block/>
+
 ### **const(상수), let(변수), var(변수)**<br>: 변수 선언
+
 > const는 변경하면 안되는 불변 변수 선언 시 주로 사용. 변수 자체는 재할당 할 수 없지만 내부 속성 값은 변경 가능. 따라서 기본적으로 const를 사용하고 값이 변경될 수 있는 변수 선언 시 let을 사용한다. var은 사용하지 않는 게 좋다.
+
 <table header-row="true" header-column="true">
+
 <colgroup>
+
 <col width="91.65625">
+
 <col>
+
 <col width="95.65625">
+
 <col width="147.65625">
+
 <col>
+
 </colgroup>
+
 <tr>
+
 <td>키워드</td>
+
 <td>재선언</td>
+
 <td>재할당</td>
+
 <td>특징</td>
+
 <td>스코프<br>(함수 외 선언 시 모두 전역 스코프)</td>
+
 </tr>
+
 <tr>
+
 <td>const</td>
+
 <td>불가능 X</td>
+
 <td>불가능 X</td>
+
 <td>가장 안전. 심볼릭 상수.</td>
+
 <td>블록 레벨 스코프</td>
+
 </tr>
+
 <tr>
+
 <td>let</td>
+
 <td>불가능 X</td>
+
 <td>가능 O</td>
+
 <td>값이 바뀔 때만 사용</td>
+
 <td>블록 레벨 스코프</td>
+
 </tr>
+
 <tr>
+
 <td>var</td>
+
 <td>가능 O</td>
+
 <td>가능 O</td>
+
 <td>비추천. 오류 위험. 호이스팅 O</td>
+
 <td>함수 스코프(블록 레벨 스코프 무시)</td>
+
 </tr>
+
 </table>
+
 ### Types<br>: 타입
+
 <table header-row="true" header-column="true">
+
 <colgroup>
+
 <col>
+
 <col width="484">
+
 </colgroup>
+
 <tr>
+
 <td>원시타입(**Primitive Types)**</td>
+
 <td>설명</td>
+
 </tr>
+
 <tr>
+
 <td>**숫자(Number)**</td>
+
 <td>숫자, 정수  `20`</td>
+
 </tr>
+
 <tr>
+
 <td>**문자열(String)**</td>
+
 <td>문자. " " ,  ' ' , \`\` 사용. \$\{value\} 통해 문자열에 변수, 함수 호출 및 산술 표현식 직접 삽입은 백틱(\` \`)만 가능  `\`HELLO WORLD\`\`</td>
+
 </tr>
+
 <tr>
+
 <td>**불리언(Boolean)**</td>
+
 <td>true 또는 false 값. TF. 이진수에서는 True- 1/False- 0. `true`</td>
+
 </tr>
+
 <tr>
+
 <td>**null**</td>
+
 <td>비어 있는 값 명시적 표현. null이라는 값을 할당받았다.<br>변수 초기화. 공간 형성 o + 기본값 null 삽입 \<- 개발자가 의도한 값<br>콘솔에서는 null로 표시되며, 타입은 null이나, js오류로 object로 표시되고 있다.  `let vol = null;`</td>
+
 </tr>
+
 <tr>
+
 <td>**undefined**</td>
+
 <td>정의되지 않은 값. 값을 할당받지 못했다.        <br>공간 형성 x, 기본값 생략 \<- 개발자가 의도하지 않은 예외<br>따라서 콘솔에서는 undefined로 표시되며, 타입도 undefined다.  `let vol2;`</td>
+
 </tr>
+
 <tr>
+
 <td>**심벌(Symbol)**</td>
+
 <td>ES6에서 추가된 고유 식별자</td>
+
 </tr>
+
 <tr>
+
 <td>**BigInt**</td>
+
 <td>매우 큰 정수</td>
+
 </tr>
+
 <tr color="gray_bg">
+
 <td>참조 타입 (Reference Types)</td>
+
 <td>**설명**</td>
+
 </tr>
+
 <tr>
+
 <td>객체(Object)</td>
+
 <td>키(Key)와 값(Value)의 집합, 배열(Array), 함수(Function) 등<br> `{"name" : "사과", "color" : "빨간색", "harvest": "8월"};`</td>
+
 </tr>
+
 </table>
+
 ### 추상화
+
 > 부모 클래스에서 정의하며, 자식 클래스에서 반드시 구현(오버라이딩)해야만 사용할 수 있는 메소드.<br>여러 객체에서 공통적인 특징(속성, 메서드)만 추출하여 뼈대(추상 클래스)를 만든다.
-<empty-block/>
+
 ### Literal(리터럴)& **Literal Notation(**리터럴 표기법)
+
 <callout>
+
 	**리터럴**
+
 	특정한 자료형의 값을 직접 표현하는 방식으로, 변수에 넣는 변하지 않는 고정된 데이터 값 자체를 말한다. 이름(식별자)이 없는 상수. let age = 25; 에서는 `25`가 정수 리터럴.
+
 	---
+
 	**리터럴 표기법**
+
 	리터럴을 사용해 객체나 값을 정의하는 문법적 방식. <br>**종류**: 정수 리터럴, 실수/부동소수점 리터럴, 문자 리터럴, 문자열 리터럴, 불리언 리터럴, null 리터럴, 템플릿 리터럴 `console.log(\`Text\`);`, 배열 리터럴 `"HELLO"` , 객체 리터럴 `{name: 'Kim'};`
+
 	---
+
 	**객체 리터럴 구조**
 	```javascript
 const myCar = {
@@ -173,92 +306,159 @@ const myCar = {
 myCar["color"] = "검정"; // 속성 추가 가능
 	```
 	---
+
 	**보간법**
+
 	백틱(\`)과 \$\{\}을 사용해 문자열 내부에 변수를 직접 삽입한다. `console.log(\`Text ${plus}\`);`
+
 </callout>
-<empty-block/>
+
 ### Symbolic(심볼릭)
+
 > 식별자를 지정해 사용하는 상수. 키워드를 사용하여 변수처럼 이름을 선언하고 값을 대입한다. 프로그램 실행 중 값이 변경되지 않는다. 가독성이 좋아지고, 유지보수가 쉽다. 고정적인 숫자는 심볼릭을 사용하는 게 좋다. `const` 
-<empty-block/>
+
 ---
+
 ## JS 함수
-<empty-block/>
+
 ### Hoisting(**호이스팅)**
+
 > 인터프리터가 코드를 실행하기 전에 함수, 변수, 클래스 또는 import의 선언이 코드 맨 위로 끌어올려진 것처럼 보이는 현상. **코드 선언 위치와 상관없이 실행 전 최상단으로 끌어올려져 실행된다.  <br>(**ex. `function` , `var` )
+
 ### function()\{\} VS const=()⇒\{\}<br>: 함수 선언문  VS 함수 표현식
+
 > 함수 표현식은 ECMA6 이후 등장한 문법으로 호이스팅이 불가하다.  코드의 안정성, 가독성, 그리고 유지보수를 높이기 위해서 const를 주로 사용한다.<br>**<br>호이스팅(Hoisting)<br>**인터프리터가 코드를 실행하기 전에 함수, 변수, 클래스 또는 import의 선언이 코드 맨 위로 끌어올려진 것처럼 보이는 현상. **코드 선언 위치와 상관없이 실행 전 최상단으로 끌어올려져 실행된다.**
-<empty-block/>
+
 <table header-row="true" header-column="true">
+
 <colgroup>
+
 <col width="91.00000762939453">
+
 <col width="285">
+
 <col width="323.0000305175781">
+
 </colgroup>
+
 <tr>
+
 <td>항목</td>
+
 <td>function; 함수 선언문<br>Function Declaration</td>
+
 <td>const; 함수 표현식<br>Function Expression</td>
+
 </tr>
+
 <tr>
+
 <td>구문</td>
+
 <td>`function(){}`</td>
+
 <td>`const=()⇒{}`</td>
+
 </tr>
+
 <tr>
+
 <td>간결성</td>
+
 <td>상대적으로 길고 중복되는 느낌</td>
+
 <td>return과 \{\} 생략 가능하여 매우 간결</td>
+
 </tr>
+
 <tr>
+
 <td>호이스팅</td>
+
 <td>O  (선언 전 호출 가능)</td>
+
 <td>X  (선언 후 호출 필수)</td>
+
 </tr>
+
 <tr>
+
 <td>생성자 new</td>
+
 <td>O  (사용 가능)</td>
+
 <td>X  (사용 불가)</td>
+
 </tr>
+
 <tr>
+
 <td>스코프</td>
+
 <td>함수 스코프<br>(지역 변수. 선언된 함수 안에서만 접근 가능)</td>
+
 <td>블록 레벨 스코프<br>(지역 변수. 블록\{\} 안에서만 접근 가능)</td>
+
 </tr>
+
 <tr>
+
 <td>재선언</td>
+
 <td>재선언 가능 (위험)</td>
+
 <td>재선언 불가</td>
+
 </tr>
+
 <tr>
+
 <td>this 바인딩</td>
+
 <td>동적 바인딩(Dynamic Binding)<br>(실행 시점 기준 this 동적 결정)</td>
+
 <td>렉시컬 바인딩(Lexical Binding)<br>(생성 시점 기준 this 정적 고정. 정의된 위치 상위 스코프 this 상속)</td>
+
 </tr>
+
 <tr>
+
 <td>arguments</td>
+
 <td>함수 내부에서 arguments 객체 사용 가능<br>`function sum() { // 인자 정의 안해도 ok<br>console.log(arguments); // 10`</td>
+
 <td>arguments 지원X (대신 Rest 파라미터 ...args 사용)<br>`const sum = (...args) => { // args  배열 생성<br>console.log(args[0]); // 10`</td>
+
 </tr>
+
 <tr>
+
 <td>객체 안 <br>메서드</td>
+
 <td>key: value 형태: `keyname: function() {}`<br>최신 축약:  `keyname() {}`<br>객체 안 한정 메서드 축약 표현 사용 가능</td>
+
 <td>메서드 내부 콜백 함수로 많이 사용</td>
+
 </tr>
+
 </table>
+
 ### **console.log()<br>: 콘솔 출력_디버깅**
+
 > 개발자 도구(F12) 콘솔에 문자열로 메시지를 출력해 디버깅한다.
 ```javascript
 console.log(item);
 // 예시 
 const item = {"name" : "사과", "color" : "빨간색", "harvest": "8월"};
 ```
-<empty-block/>
+
 ### **alert()<br>: **웹페이지 팝업 알림
 ```javascript
 alert('HELLOWORLD');
 ```
-<empty-block/>
+
 ### **typeof<br>: 반환값 확인**
+
 > 변수나 값의 데이터 타입을 문자열로 반환한다. 값의 종류를 확인할 때 사용한다. 
 ```javascript
 console.log(typeof "Hello")     // "string"
@@ -270,28 +470,37 @@ console.log(typeof [])          // "object"
 console.log(typeof function(){})// "function"
 ```
 ### **onclick<br>: 버튼 클릭**
+
 > 버튼을 클릭했을 때 자바스크립트 코드를 실행하는 인라인 이벤트 핸들러 함수. <br><span color="gray">보안 위험, 사용 지양.  —\> 대안: .addEventListener</span>
 ```javascript
 <button onclick="javascript코드">버튼이름</button> 
 ```
-<empty-block/>
+
 ### **javascript:void(0)<br>: 링크 무효화**
+
 > \<a\> 태그의 href 속성에 사용해 링크 기능을 무효화시킨다. 페이지 이동이나 새로고침 없이 자바스크립트 동작만 실행하게 할 수 있다. <span color="gray">ex) onClick과 결합해 버튼으로 이용</span>
 ```javascript
 <a href="javascript:void(0)">BTN</a>
 ```
-<empty-block/>
-<empty-block/>
+
 ---
+
 ## **document 함수**
+
 > 브라우저가 불러온 웹 페이지(HTML 문서) 전체를 가리키는 객체로, DOM(Document Object Model) 트리의 진입점이다. HTML 요소와 관련된 작업을 도와주는 다양한 메소드를 제공한다. <br><span color="gray">DOM: HTML 문서를 브라우저가 이해할 수 있는 트리(Tree) 구조로 만든 객체 모델. </span>
-<empty-block/>
+
 ### Array.from()<br>:유사배열→배열
+
 <callout>
+
 	유사배열은 배열 같지만 객체이므로 forEach(), map() 등 유용한 함수를 직접 사용할 수 없기 때문에 Array.from() 또는 Spread 연산자 \[…item\] 으로 변환하는 과정이 필요하다.
+
 	예외적으로 querySelectorAll()는 유사배열이지만 forEach()를 직접 사용할 수 있다.
+
 	---
+
 	**기본 배열(Array)**: 직접 선언 `const arr =[1,2];` , 배열로 변환 `Arrayfrom()` , `[…item]`
+
 </callout>
 ```javascript
 const items = document.getElementsByClassName("thing");
@@ -300,6 +509,7 @@ const arr1 = Array.from(items);  // Array.from()
 const arr2 = [...items];   // Spread 연산자 [...] 
 ```
 ### .innerHTML<br>: HTML 출력, 수정
+
 > HTML 콘텐츠를 가져오거나 내용을 변경할 때 사용한다. <br><span color="gray">보안 위험, 사용 지양.  —\> 대안: .textContent  / .insertAdjacentHTML() / createElement()</span>
 ```javascript
 document.getElementById("b1").innerHTML = "Hello World!";  // id가 "b1"인 요소 내용 변경
@@ -308,7 +518,9 @@ const element = document.getElementById('b1');  // 효율 위해 변수 정의
 element.innerHTML = '<p style="color: blue;">안녕하세요!</p>';  // HTML 태그 포함 내용 삽입
 ```
 ### - 요소 선택
+
 ### **.getElementById(id)<br>: 특정 id 가진 요소 선택**
+
 > 요소 하나만 선택된다.
 ```javascript
 this.curSpeed += 10;  // curSpeed의 값 +10
@@ -317,6 +529,7 @@ document.getElementById('gauge').style.width=`${this.curSpeed *2}px`; // id가 "
 document.getElementById('curSpeed').value=this.curSpeed; // id가 "curSpeed"인 요소 선택 후 값에 curSpeed 삽입
 ```
 ### .getElementsByClassName(name)<br>: 특정 class 가진 모든 요소 선택
+
 > 이보다 더 편리한 querySelectorAll 사용 추천.<br>forEach() `<Array.from() 필요`, for …of, for로 개별 요소에 접근할 수 있다.
 ```javascript
 const item = document.getElementsByClassName("thing");  // "thing" class인 모든 요소 선택
@@ -327,45 +540,63 @@ itemArray.forEach((item, index) =>{
 });
 ```
 ### .getElementsByTagName(tag)<br>: 특정 tag 가진 모든 요소 선택
+
 > 이보다 더 편리한 querySelectorAll 사용 추천.<br>forEach() `<Array.from() 필요`, for …of, for로 개별 요소에 접근할 수 있다.
 ```javascript
 document.getElementsByTagName("li");
 ```
 ### .querySelector(cssSelector)<br>: CSS 선택자 만족하는 첫번째 요소 선택
+
 >
+
 ### .querySelectorAll(cssSelector)<br>: CSS 선택자 만족하는 모든 요소 선택
-<empty-block/>
+
 ### - 요소 생성&변경
+
 > **포함관계: 객체(Object) \> 노드(Node) \> 요소(Element)<br>**객체: 키(key)과 값(value)으로 구성된 프로퍼티(Property)들의 집합<br>노드: DOM 트리 구조에 참여하는 텍스트, 주석, 태그 등의 객체<br>요소: 노드 중 \<div\>, \<p\> 같은 HTML 태그 객체
+
 ### .createElement(tagName)<br>: 새로운 요소 노드 생성
-<empty-block/>
+
 ### .createTextNode(text)<br>: 새로운 텍스트 노드 생성
-<empty-block/>
+
 ### .appendChild(node)<br>: 자식 노드 추가
-<empty-block/>
+
 ### .removeChild(node)<br>: 자식 노드 제거<br>
+
 ### .write(text)<br>: 문서에 텍스트 또는 HTML 출력
+
 > <span color="gray">보안 위험, 사용 지양.  —\> 대안: .textContent / .insertAdjacentHTML()</span>
+
 ### .write()<br>: 출력
+
 > 괄호 안 내용을 브라우저가 페이지에 즉시 삽입하는 함수. 사용 지양.
 ```javascript
 document.write('<h1>HELLO WORLD</h1>');
 document.writeln('<h1>HELLO WORLD</h1>');   // 하단 자동 줄바꿈
 ```
-<empty-block/>
+
 ## - 이벤트 처리<br>
+
 ### **.**addEventListener('EventType',() ⇒\{\})<br>: 요소에 이벤트 리스너 추가
+
 <br>
 ```javascript
 
 ```
 <callout icon="💡" color="gray_bg">
+
 	click, input, keydown, change, scroll, resize, DOMContentLoaded
+
 </callout>
+
 문서 전체 이벤트:<br>DOMContentLoaded: DOM 트리 구조가 로드된 시점에 이벤트 발생.
+
 ---
+
 ## JS 실습(다른 페이지로)
+
 ### HTML JS 직접 삽입 {toggle="true"}
+
 	코드가 지저분해지고 유지보수가 힘들어 권장되지 않는다.
 	```html
 <body>
@@ -386,11 +617,15 @@ document.writeln('<h1>HELLO WORLD</h1>');   // 하단 자동 줄바꿈
 </body>
 
 	```
-	<empty-block/>
+
 ---
+
 ### .write() {toggle="true"}
+
 	<callout>
+
 		**document.write()<br>**괄호 안 내용을 브라우저가 페이지에 즉시 삽입하는 함수. 텍스트 뿐만 아니라 HTML태그도 인식해 렌더링한다. writeln은 자동줄바꿈된다. `document.write('<h1>HELLO WORLD</h1>');`
+
 	</callout>
 	```html
 <body>
@@ -403,11 +638,15 @@ document.writeln('<h1>HELLO WORLD</h1>');   // 하단 자동 줄바꿈
     <button onclick="document.write('<h1>HELLO WO..</h1>')">ADD</button>
 </body>
 	```
-	<empty-block/>
+
 ---
+
 ### .**getElementById()** {toggle="true"}
+
 	<callout>
+
 		**getElementById()<br>**주어진 문자열과 일치하는 id 속성을 가진 요소를 찾고, 이를 나타내는 Element(요소)를 반환한다.<br>`getElementById('d1')`
+
 	</callout>
 	```html
 <body>
@@ -420,8 +659,9 @@ document.writeln('<h1>HELLO WORLD</h1>');   // 하단 자동 줄바꿈
     </script>
 </body>
 	```
-	<empty-block/>
+
 ---
+
 ### Types {toggle="true"}
 	```html
 <body>
@@ -469,8 +709,9 @@ document.writeln('<h1>HELLO WORLD</h1>');   // 하단 자동 줄바꿈
     </script>
 </body>
 	```
-	<empty-block/>
+
 ---
+
 ### 보간법 {toggle="true"}
 	```html
 <body>
@@ -496,8 +737,9 @@ document.writeln('<h1>HELLO WORLD</h1>');   // 하단 자동 줄바꿈
     </script>
 </body>
 	```
-	<empty-block/>
+
 ---
+
 ### 음
 ```html
     <body>
@@ -596,7 +838,6 @@ document.writeln('<h1>HELLO WORLD</h1>');   // 하단 자동 줄바꿈
         document.getElementById('curSpeed').value = myCar.curSpeed;
         document.getElementById('fulAmount').value = myCar.fulAmount;
 
-
         const tori = {
             // 속성
             name: "토리",
@@ -622,11 +863,11 @@ document.writeln('<h1>HELLO WORLD</h1>');   // 하단 자동 줄바꿈
 </body>
 </html>
 ```
-<empty-block/>
-<empty-block/>
+
 ---
+
 # 26-03-20 실습
-<empty-block/>
+
 ### 호이스팅 Hoisting {toggle="true"}
 	```html
 <script>
@@ -674,7 +915,7 @@ document.writeln('<h1>HELLO WORLD</h1>');   // 하단 자동 줄바꿈
 
 </script>
 	```
-	<empty-block/>
+
 ### 스코프 Scope {toggle="true"}
 	```c++
     <script>
@@ -775,7 +1016,7 @@ document.writeln('<h1>HELLO WORLD</h1>');   // 하단 자동 줄바꿈
 
     </script>
 	```
-	<empty-block/>
+
 ### 클로저 Closure {toggle="true"}
 	```c++
     <script>
@@ -809,7 +1050,6 @@ document.writeln('<h1>HELLO WORLD</h1>');   // 하단 자동 줄바꿈
          closureFunc(20);
          closureFunc(30);
          closureFunc(40);
-
 
         // 전역에서 선언 시 전역스코프가 된다.
          var x = 'global x'; // 전역스코프(Window)
@@ -980,4 +1220,3 @@ document.writeln('<h1>HELLO WORLD</h1>');   // 하단 자동 줄바꿈
 
     </script>
 	```
-<empty-block/>

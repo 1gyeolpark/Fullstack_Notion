@@ -1,8 +1,7 @@
-<empty-block/>
-<empty-block/>
-<empty-block/>
 ![](images/image1.png)
+
 configure클릭
+
 <embed src=""></embed>
 ```javascript
 
@@ -211,52 +210,43 @@ jobs:
 
 ```
 참고링크
+
 <unknown url="https://app.notion.com/p/34420a7d9f4c80b7af25db0d8f1310be#34420a7d9f4c8028b633d00c8952bbc2" alt="bookmark"/>
+
 로그인- 새 워크스페이스 생성
-<empty-block/>
+
 더보기- 앱
+
 Jira Cloud설치해 atlassian과 연결
+
 ![](images/image3.png)
-<empty-block/>
+
 ![](images/image4.png)
+
 **/jira help** 로 명령어 확인가능
+
 ![](images/image5.png)
+
 **Connect project**를 클릭하여 JIRA Project를 연결<br>
+
 ![](images/image6.png)
-<empty-block/>
+
 ![](images/image7.png)
+
 ![](images/image8.png)
+
 ![](images/image9.png)
-<empty-block/>
+
 /jira create
+
 ![](images/image10.png)
-<empty-block/>
-<empty-block/>
+
 ![](images/image11.png)
-<empty-block/>
+
 지라에 이슈 생성
+
 ![](images/image12.png)
-<empty-block/>
-<empty-block/>
+
 이슈+브랜치 자동생성(지라 설정)
+
 ![](images/image13.png)
-<empty-block/>
-<empty-block/>
-<empty-block/>
-<empty-block/>
-<empty-block/>
-<empty-block/>
-<empty-block/>
-<empty-block/>
-<empty-block/>
-<empty-block/>
-<empty-block/>
-<empty-block/>
-<empty-block/>
-<empty-block/>
-<empty-block/>
-<empty-block/>
-<empty-block/>
-<empty-block/>
-<empty-block/>
-<empty-block/>

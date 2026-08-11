@@ -1,22 +1,37 @@
 ## MYSQL 설치
+
 <callout>
+
 	[MySQL Community Downloads](https://downloads.mysql.com/)  사이트에서  [MySQL Installer for Windows](https://dev.mysql.com/downloads/windows/) 에 들어가 Windows (x86, 32-bit), MSI Installer 556.0M의 [Download](https://dev.mysql.com/downloads/file/?id=548821) 버튼 클릭하고 다운로드. 
+
 	파일 바로 다운로드\> [**MYSQL 다운로드 파일**](https://dev.mysql.com/get/Downloads/MySQLInstaller/mysql-installer-community-8.0.45.0.msi)
+
 	---
+
 	설치된 파일 클릭하고 전부 기본 설정 그대로 넘기다 password 설정. 이후도 넘겨 다운로드
+
 </callout>
-<empty-block/>
+
 ---
+
 ### 환경변수 설정
+
 > 실행 파일의 전체 경로를 매번 입력하지 않고도 어디서든 명령어 실행 가능하게 설정 
+
 <callout>
+
 	1. 검색창에 **실행** 입력 → 실행창 열기에 **sysdm.cpl **작성해 시스템 속성창 열기 
+
 	2.  고급 → **환경변수 **→ 시스템변수에 내부 클릭 후 p 작성하면 보이는 path 클릭해 **편집** 
+
 	3. 환경 변수 편집 창에서 맨 아래 더블클릭해 내 MYSQL bin 설치 위치 입력(ex. C:\\Program Files\\MySQL\\MySQL Server 8.0\\bin) 후 **확인**
+
 </callout>
-<empty-block/>
+
 ---
+
 ## 명령어
+
 ### 터미널-관리자 권한 접속<br>: mysql -u root -p
 ```javascript
 mysql -u root -p
@@ -37,7 +52,7 @@ mysql> show databases;
 +--------------------+
 6 rows in set (0.00 sec)
 ```
-<empty-block/>
+
 ```javascript
 mysql> use testdb;
 Database changed
@@ -68,29 +83,43 @@ mysql> show tables;
 mysql> select * from tbl_product;
 Empty set (0.00 sec)
 ```
-<empty-block/>
-<empty-block/>
-<empty-block/>
+
 ---
+
 ## MYSQL APP  vs  CMD
-<empty-block/>
+
 <callout>
+
 	**MYSQL 어플**
+
 	![](images/image.png)
+
 </callout>
+
 ### 새 DB 생성
+
 #### 새 DB_APP
+
 <callout>
+
 	1. 왼쪽 Schemas 영역 **오른쪽 마우스** → **Create Schema** 클릭 → 중앙에 뜨는 창에 원하는 Name 작성하고** Apply**
+
 	2. Apply SQL Script to Database 창 뜨면 확인하고** Apply** → **Finish**
+
 	3. 왼쪽 영역 확인해보면 생성된 것을 확인할 수 있다. 
+
 </callout>
+
 <details>
+
 <summary>참고 사진</summary>
+
 	![](images/image_2.png)
+
 	![](images/image_3.png)
+
 </details>
-<empty-block/>
+
 #### 새 DB_CMD<br>: create database ‘dbname';
 ```javascript
 mysql> create database test2db;
@@ -109,14 +138,17 @@ mysql> show databases;
 +--------------------+
 6 rows in set (0.00 sec)
 ```
-<empty-block/>
+
 ---
-<empty-block/>
-<empty-block/>
+
 ### DB제거 방법 1
+
 ![](images/image_4.png)
+
 ![](images/image_5.png)
+
 ![](images/image_6.png)
+
 ### DB제거 방법 2<br>drop database test2db;
 ```javascript
 mysql> drop database test2db;
@@ -134,13 +166,15 @@ mysql> show databases;
 4 rows in set (0.00 sec)
 ```
 ![](images/image_7.png)
-<empty-block/>
-<empty-block/>
-<empty-block/>
+
 pk
+
 key.행간구별.유일.
+
 ### 구조 만드는 방법1
+
 ![](images/image_8.png)
+
 ![](images/image_9.png)
 ```javascript
 // 축약 가능
@@ -152,17 +186,21 @@ CREATE TABLE `test1db`.`tbl_user` (
   PRIMARY KEY (`userID`));
 ```
 apply-finish
-<empty-block/>
+
 스패너 클릭하면 구조 수정 가능
+
 ![](images/image_10.png)
+
 ![](images/image_11.png)
-<empty-block/>
-<empty-block/>
-<empty-block/>
+
 ### 구조 만드는 방법2<br>create table tbl_user
+
 use test2db;
+
  create table test2db.tbl_user
+
 이미 use중이라면 create table tbl_user 생략 가능
+
 ### show tables; → desc tbl_user;
 ```javascript
 mysql> use test2db;
@@ -172,7 +210,6 @@ mysql> create table tbl_user(
     -> username varchar(45) null,
     -> password varchar(255));
 Query OK, 0 rows affected (0.02 sec)
-
 
 mysql> show tables;
 +-------------------+
@@ -193,16 +230,18 @@ mysql> desc tbl_user;
 +----------+--------------+------+-----+---------+-------+
 3 rows in set (0.00 sec)
 ```
-<empty-block/>
-<empty-block/>
+
 ```javascript
 select * from tbl_user;
 Empty set (0.00 sec)
 ```
-<empty-block/>
+
 ### 테이블 생성 (문제)<br>
+
 -- 테이블명: tbl_product<br>-- 다음 조건으로 테이블을 생성하세요.
+
 prod_id int primary,<br>prod_name varchar(100) not null,<br>prod_category varchar(10) null,<br>prod_details varchar(1024) null,<br>reg_date datetime not null,<br>prod_price int not null
+
 - - 참고 문법: use testdb;<br>create table 테이블명 (<br>컬럼명 자료형 제약조건,<br>...<br>);
 ```javascript
 mysql> create database testdb;
@@ -230,10 +269,11 @@ ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that 
 prod_category varchar(10) null,
 prod_details varchar(1024' at line 3
 ```
-<empty-block/>
+
 ![](images/image_12.png)
+
 내용 추가
-<empty-block/>
+
 ```javascript
 mysql> alter table tbl_user
     -> add column tel varchar(45) null after userid;
@@ -253,10 +293,11 @@ mysql> desc tbl_user;
 4 rows in set (0.00 sec)
 ```
 ---
-<empty-block/>
+
 구조 수정
+
 걍 거기서 수정하고 어플라이
-<empty-block/>
+
 DB
 ```javascript
 mysql> use test2db;
@@ -296,12 +337,13 @@ mysql> desc tbl_user;
 +----------+--------------+------+-----+---------+-------+
 4 rows in set (0.00 sec)
 ```
-<empty-block/>
-<empty-block/>
+
 삭제
+
 ![](images/image_13.png)
+
 어플라이
-<empty-block/>
+
 cmd
 ```javascript
 mysql> use test2db;
@@ -331,19 +373,25 @@ mysql> desc tbl_user;
 +----------+--------------+------+-----+---------+-------+
 3 rows in set (0.00 sec)
 ```
-<empty-block/>
-<empty-block/>
+
 ALTER 실습 문제<br>tbl_product 테이블의 구조를 다음과 같이 수정하세요.
+
 Column 추가 : amount int not null<br>Column 수정 : prod_price → prod_price varchar(100) null<br>Column 삭제 : prod_details<br>참고 문법<br>컬럼 추가 :<br>alter table 테이블명 add column 컬럼명 자료형 제약조건;
+
 컬럼 수정 :<br>alter table 테이블명 change column 기존컬럼명 변경컬럼명 자료형 제약조건;
+
 컬럼 삭제 :<br>alter table 테이블명 drop 컬럼명;
+
 alter table tbl_product<br>-\>  add column amount int not null;
+
  alter table tbl_product 
+
 -\>  change column prod_price price varchar(100) null;
-<empty-block/>
+
 alter table tbl_product 
+
 -\>  drop prod_details;
-<empty-block/>
+
 ```javascript
 alter table tbl_product
 ->  add column amount int not null;
@@ -355,6 +403,7 @@ alter table tbl_product
 ->  drop prod_details;
 ```
 <details>
+
 <summary>문제 풀기</summary>
 	```javascript
 // 컬럼 추가
@@ -432,10 +481,11 @@ mysql> desc tbl_product;
 
 	```
 </details>
-<empty-block/>
+
 ### DB에 자료 넣기
+
 ![](images/image_14.png)
-<empty-block/>
+
 그냥 표에 넣기
 ```javascript
 mysql> desc tbl_user;
@@ -478,7 +528,7 @@ mysql> select * from tbl_user;
 2 rows in set (0.00 sec)
 ```
 ---
-<empty-block/>
+
 ```javascript
 mysql> update tbl_user set tel ='01055554444',password='8888'; // 이렇게하면 전부바뀐다.
 Query OK, 2 rows affected (0.00 sec)
@@ -511,7 +561,7 @@ mysql> select * from tbl_user;
 ```javascript
 DELETE FROM `test1db`.`tbl_user` WHERE (`userID` = 'user1');
 ```
-<empty-block/>
+
 ```javascript
 mysql> use test2db;
 Database changed
@@ -543,9 +593,7 @@ mysql> select * from tbl_user;
 +--------+-------------+----------+
 1 row in set (0.00 sec)
 ```
-<empty-block/>
-<empty-block/>
-<empty-block/>
+
 ```javascript
 create table tbl_product(
 prod_id varchar(45) primary key,
@@ -570,59 +618,107 @@ update tbl_product set reg_date= '2023/01/01' where prod_category ='가전';
 delete from tbl_product where prod_id='1111';
 
 ```
-<empty-block/>
+
 # **DML 문제 - tbl_product 테이블**
+
 ---
+
 **1. 값 추가 (INSERT)**
+
 다음 데이터를 tbl_product 테이블에 추가하세요.
+
 <table header-row="true">
+
 <tr>
+
 <td>**prod_id**</td>
+
 <td>**prod_name**</td>
+
 <td>**prod_category**</td>
+
 <td>**reg_date**</td>
+
 <td>**prod_price**</td>
+
 <td>**amount**</td>
+
 </tr>
+
 <tr>
+
 <td>1111</td>
+
 <td>LG_GRAM_2023</td>
+
 <td>가전</td>
+
 <td>2024/01/22</td>
+
 <td>830,000</td>
+
 <td>100</td>
+
 </tr>
+
 <tr>
+
 <td>1112</td>
+
 <td>SAMSUNG_FLEX2</td>
+
 <td>가전</td>
+
 <td>2024/01/22</td>
+
 <td>3,000,000</td>
+
 <td>50</td>
+
 </tr>
+
 <tr>
+
 <td>2000</td>
+
 <td>대우_통돌이_01</td>
+
 <td>가전</td>
+
 <td>2024/01/22</td>
+
 <td>590,000</td>
+
 <td>25</td>
+
 </tr>
+
 <tr>
+
 <td>3001</td>
+
 <td>이것이리눅스다</td>
+
 <td>도서</td>
+
 <td>2023/01/22</td>
+
 <td>30,000</td>
+
 <td>1000</td>
+
 </tr>
+
 </table>
+
 **2. 값 수정 (UPDATE)**
+
 prod_category가 '가전'인 모든 행의 reg_date 값을 '2023/01/01'로 변경하세요.
+
 **3. 값 삭제 (DELETE)**
+
 prod_id가 1111인 행을 삭제하세요.
 ```javascript
-
 
 mysql> create table tbl_product(
     -> prod_id varchar(45) primary key,
@@ -699,12 +795,11 @@ mysql> select * from tbl_product;
 +---------+----------------+---------------+------------+------------+--------+
 3 rows in set (0.00 sec)
 ```
-<empty-block/>
-<empty-block/>
+
 [MySQL workbench 계정 생성, 권한부여](https://nsmchan.tistory.com/27)
-<empty-block/>
+
 - administration - users and privileges에서 새 유저 만들고 권한 어쩌고 
-<empty-block/>
+
 ```javascript
 C:\Users\Administrator>mysql -u user1 -p1234 -h 192.168.5.50
 mysql: [Warning] Using a password on the command line interface can be insecure.
@@ -769,7 +864,9 @@ mysql> select * from tbl_user;
 4 rows in set (0.00 sec)
 ```
 ![](images/image_16.png)
+
 ![](images/image_17.png)
+
 쿼리 ctrl-엔터 = 현재 커서 있는 줄 실행
 ```javascript
 mysql> show databases;
@@ -789,7 +886,6 @@ mysql> show databases;
 
 mysql> use mysql;
 Database changed
-
 
 mysql> select user ,host from user;
 +------------------+-----------+
@@ -843,7 +939,7 @@ mysql> revoke INSERT on test2db. * from user30@localhost;
 Query OK, 0 rows affected (0.00 sec)  // 모든 권한 삭제
 
 ```
-<empty-block/>
+
 ```javascript
 // 내 답
 
@@ -866,7 +962,6 @@ SQL : CREATE USER 'intern_admin'@'localhost' IDENTIFIED BY 'intern@123';
 SQL : SELECT user, host FROM mysql.user WHERE user = 'intern_admin';
 문제 3: "생성했던 intern_admin 계정을 삭제하세요." 
 SQL : DROP USER 'intern_admin'@'localhost';
-
 
 // 내 답 = 정답 ----------------
 
@@ -895,8 +990,7 @@ SQL : DROP USER 'dev_user'@'%';
 SQL : FLUSH privileges;
 
 ```
-<empty-block/>
-<empty-block/>
+
 ```sql
 use test1db;
 
@@ -911,7 +1005,6 @@ ROLLBACK;  -- 걸면 전 시점으로 돌아간다
 COMMIT;
 
 SELECT * FROM tbl_user;
-
 
 // 세이브포인트 설정
 use test1db;
@@ -936,10 +1029,9 @@ COMMIT;
 
 SELECT * FROM tbl_user;
 ```
-<empty-block/>
-<empty-block/>
+
 문제
-<empty-block/>
+
 ```sql
 //내답=정답
 
@@ -950,7 +1042,6 @@ SQL : SELECT @@autocommit;
 
 문제 2: "트랜잭션을 수동으로 제어하기 위해 AUTOCOMMIT 설정을 비활성화(0)하세요." 
 SQL : SET autocommit = 0;
-
 
 //내답=정답
 기본 환경 
@@ -982,12 +1073,9 @@ SQL : 다음 숫자 라인에 코드 입력하세요
 2.DELETE FROM tbl_test;
 3.ROLLBACK;
 
-
-
 단계 3: SAVEPOINT 활용
 
 문제 5:  다음 1,2,3,4... 에 설명에 맞는 코드를 입력하세요
-
 
 1.-- 트랜잭션시작
 2.-- tbl_test 테이블에 5, 'ab', 20, 'M' 삽입
@@ -1008,33 +1096,41 @@ SQL : 다음 숫자 라인에 코드 입력하세요
 8.COMMIT;
 
 ```
-<empty-block/>
-<empty-block/>
-<empty-block/>
+
 ![](images/image_18.png)
+
 ![](images/image_19.png)
+
 ![](images/image_20.png)
+
 ![](images/image_21.png)
-<empty-block/>
-<empty-block/>
+
 백업
-<empty-block/>
+
 ![](images/image_22.png)
+
 ![](images/image_23.png)
+
 ![](images/image_24.png)
+
 ![](images/image_25.png)
+
 단일백업
+
 ![](images/image_26.png)
+
 ![](images/image_27.png)
-<empty-block/>
+
 복원
+
 ![](images/image_28.png)
+
 ![](images/image_29.png)
-<empty-block/>
+
 단일복원
+
 ![](images/image_30.png)
-<empty-block/>
-<empty-block/>
+
 커맨드
 ```javascript
 // 백업
@@ -1053,7 +1149,6 @@ mysqldump: [Warning] Using a password on the command line interface can be insec
 
 C:\Users\Administrator\Downloads\BACKUP>mysqldump -u root -p1234 world city > world_city_backup.sql
 mysqldump: [Warning] Using a password on the command line interface can be insecure.
-
 
 // 복원
 
@@ -1077,395 +1172,737 @@ Enter password: ****
 // --------
 mysql> source all_backup.sql
 ```
-<empty-block/>
-<empty-block/>
-<empty-block/>
-<empty-block/>
+
 ![](images/image_31.png)
-<empty-block/>
+
 ㄴ 이렇게 생성
-<empty-block/>
-<empty-block/>
+
 ![](images/image_32.png)
+
 ㄴ cascade: 기본 수정 시 외래도 수정+삭제되게 설정필
-<empty-block/>
-<empty-block/>
-<empty-block/>
+
 ![](images/image_33.png)
+
 다 넥스트, . . . 
+
 ![](images/image_34.png)
+
 이게 쿼리문. 과제낼때 복붙
-<empty-block/>
+
 ![](images/image_35.png)
+
 이게 저장
-<empty-block/>
-<empty-block/>
+
 존재하는 데이터베이스 열기
-<empty-block/>
+
 ![](images/image_36.png)
-<empty-block/>
+
 ![](images/image_37.png)
-<empty-block/>
-<empty-block/>
+
 #### PK 설정
+
 ![](images/image_38.png)
-<empty-block/>
+
 #### AI설정<br>: 자동 값 증가(기존값 수정도)
+
 ![](images/image_39.png)
+
 #### Safe모드 해제<br>: update, delete 가능하게 설정
+
 ![](images/image_40.png)
-<empty-block/>
+
 ![](images/image_41.png)
-<empty-block/>
+
 ### 정규화
-<empty-block/>
+
 <table header-row="true" header-column="true">
+
 <colgroup>
+
 <col width="75">
+
 <col width="166.65625">
+
 <col>
+
 <col>
+
 </colgroup>
+
 <tr>
+
 <td>**구분**</td>
+
 <td>**후보키 (Candidate Key)**</td>
+
 <td>**기본키 (Primary Key)**</td>
+
 <td>**복합키 (Composite Key)**</td>
+
 </tr>
+
 <tr>
+
 <td>**정의**</td>
+
 <td>기본키가 될 수 있는 자격을 갖춘 **모든 키**</td>
+
 <td>후보키 중 설계자가 **대표로 선택한 단 하나**의 키</td>
+
 <td>**2개 이상의 속성(컬럼)**을 결합하여 만든 키</td>
+
 </tr>
+
 <tr>
+
 <td>**개수**</td>
+
 <td>테이블에 **여러 개** 존재 가능</td>
+
 <td>테이블당 **무조건 1개**</td>
+
 <td>기본키나 후보키가 복합키일 수 있음</td>
+
 </tr>
+
 <tr>
+
 <td>**주요 특징**</td>
+
 <td>유일성과 최소성을 만족해야 함</td>
+
 <td>**중복 불가(Unique)**, **비어있을 수 없음(Not Null)**</td>
+
 <td>하나의 컬럼만으로 식별이 안 될 때 사용</td>
+
 </tr>
+
 <tr>
+
 <td>**비유**</td>
+
 <td>반장 후보들 (A, B, C 학생)</td>
+
 <td>당선된 반장 (A 학생)</td>
+
 <td>공동 반장 체제 (A+B 학생이 한 팀)</td>
+
 </tr>
+
 </table>
+
 ---
+
 #### 1NF: 제1정규형
+
 모든 속성이 원자값을 가져야 한다.
+
 **하나의 셀에는 하나의 값만 존재**해야하며, 반복 그룹(중첩 테이블)은 허용되지 않는다.
+
 <br>잘못된 예시. (정규화 전) 홍길동의 전화번호가 2가지 값을 가지고 있으므로 위반
+
 <table header-row="true">
+
 <tr>
+
 <td>**학생ID**</td>
+
 <td>**이름**</td>
+
 <td>**전화번호**</td>
+
 </tr>
+
 <tr>
+
 <td>1001</td>
+
 <td>홍길동</td>
+
 <td>010-1234-5678, 010-2222-3333</td>
+
 </tr>
+
 <tr>
+
 <td>1002</td>
+
 <td>김영희</td>
+
 <td>010-4444-5555</td>
+
 </tr>
+
 </table>
+
 옳은 예시 (정규화 후)
+
 <table header-row="true">
+
 <tr>
+
 <td>**학생ID**</td>
+
 <td>**이름**</td>
+
 <td>**전화번호**</td>
+
 </tr>
+
 <tr>
+
 <td>1001</td>
+
 <td>홍길동</td>
+
 <td>010-1234-5678</td>
+
 </tr>
+
 <tr>
+
 <td>1001</td>
+
 <td>홍길동</td>
+
 <td>010-2222-3333</td>
+
 </tr>
+
 <tr>
+
 <td>1002</td>
+
 <td>김영희</td>
+
 <td>010-4444-5555</td>
+
 </tr>
+
 </table>
+
 ---
+
 #### 2NF: 제2정규형
+
 > 1NF를 만족하면서, 기본키(복합키) 일부분에만 종속되는 속성(부분 함수 종속)을 제거한 형태. 즉, 기본키 모두를 만족하는 값끼리 나눈다.
+
 잘못된 예시
+
 <table header-row="true">
+
 <tr>
+
 <td>**학생ID(기본키)**</td>
+
 <td>강좌이름(기본키)</td>
+
 <td>강의실</td>
+
 <td>성적</td>
+
 </tr>
+
 <tr>
+
 <td>1001</td>
+
 <td>자료구조</td>
+
 <td>공학관 120</td>
+
 <td>3.8</td>
+
 </tr>
+
 <tr>
+
 <td>1002</td>
+
 <td>스포츠경영학</td>
+
 <td>체육관103</td>
+
 <td>4.0</td>
+
 </tr>
+
 </table>
+
 기본키가 두개로 복합키다. 
+
 **결정자: 학생ID, 강좌이름 → 성적**
+
 여기서 강의실은 부분 함수인 강좌이름에 의해 결정될 수 있다. 그러므로 강의실을 분리해 별도로 관리하여 제2정규형을 만족시켜야 한다.
-<empty-block/>
+
 옳은 예시(정규화 후)
+
 <columns>
+
 	<column>
+
 		<table header-row="true">
+
 <tr>
+
 <td>**학생ID(기본키)**</td>
+
 <td>강좌이름(기본키)</td>
+
 <td>성적</td>
+
 </tr>
+
 <tr>
+
 <td>1001</td>
+
 <td>자료구조</td>
+
 <td>3.8</td>
+
 </tr>
+
 <tr>
+
 <td>1002</td>
+
 <td>스포츠경영학</td>
+
 <td>4.0</td>
+
 </tr>
+
 		</table>
+
 	</column>
+
 	<column>
+
 		<table header-row="true">
+
 <tr>
+
 <td>강좌이름(기본키)</td>
+
 <td>강의실</td>
+
 </tr>
+
 <tr>
+
 <td>자료구조</td>
+
 <td>공학관 120</td>
+
 </tr>
+
 <tr>
+
 <td>스포츠경영학</td>
+
 <td>체육관103</td>
+
 </tr>
+
 		</table>
+
 	</column>
+
 </columns>
+
 ---
+
 #### 3NF: 제3정규형
+
 > 2NF를 만족하면서, 이행 함수 종속이 존재하지 않도록 정규화하는 형태.<br>이행 함수 종속이란 A → B, B → C인 경우, A → C가 성립되는 상황
+
 잘못된 예시
+
 <table header-row="true">
+
 <tr>
+
 <td>**학생ID(기본키)**</td>
+
 <td>강좌이름</td>
+
 <td>수강료</td>
+
 </tr>
+
 <tr>
+
 <td>1001</td>
+
 <td>자료구조</td>
+
 <td>20000</td>
+
 </tr>
+
 <tr>
+
 <td>1002</td>
+
 <td>스포츠경영학</td>
+
 <td>15000</td>
+
 </tr>
+
 </table>
+
 여기서 이행적 종속이 존재할 때 1001학생이 스포츠경영학으로 강좌를 변경하고 나서 수강료 20000원을 내는 상황이 발생할 수도 있다. 이를 다시 변경해주어야하는 번거로움을 없애기 위해 정규화한다.
+
 옳은 예시(정규화 후)
+
 <columns>
+
 	<column>
+
 		<table header-row="true">
+
 <tr>
+
 <td>**학생ID(기본키)**</td>
+
 <td>강좌이름</td>
+
 </tr>
+
 <tr>
+
 <td>1001</td>
+
 <td>자료구조</td>
+
 </tr>
+
 <tr>
+
 <td>1002</td>
+
 <td>스포츠경영학</td>
+
 </tr>
+
 		</table>
+
 	</column>
+
 	<column>
+
 		<table header-row="true">
+
 <tr>
+
 <td>강좌이름</td>
+
 <td>수강료</td>
+
 </tr>
+
 <tr>
+
 <td>자료구조</td>
+
 <td>20000</td>
+
 </tr>
+
 <tr>
+
 <td>스포츠경영학</td>
+
 <td>15000</td>
+
 </tr>
+
 		</table>
+
 	</column>
+
 </columns>
+
 ---
+
 #### BCNF 정규화
+
 > 3NF의 강화형. 3NF를 만족하지만 여전히 결정자가 후보키가 아닌 경우를 해결
+
 잘못된 예시
+
 <table header-row="true">
+
 <tr>
+
 <td>**강의실(기본키)**</td>
+
 <td>**강의시간(기본키)**</td>
+
 <td>**담당교수**</td>
+
 </tr>
+
 <tr>
+
 <td>101호</td>
+
 <td>9시</td>
+
 <td>김교수</td>
+
 </tr>
+
 <tr>
+
 <td>101호</td>
+
 <td>10시</td>
+
 <td>김교수</td>
+
 </tr>
+
 <tr>
+
 <td>102호</td>
+
 <td>9시</td>
+
 <td>이교수</td>
+
 </tr>
+
 </table>
+
 **결정자: 강의실, 강좌이름 → 교수<br>결정자: 교수 → 강의실**
+
 여기서 교수는 강의실을 결정하는 결정자이지만 후보키가 아니다. 
+
 옳은 예시(정규화 후)
+
 <columns>
+
 	<column>
+
 		<table header-row="true">
+
 <tr>
+
 <td>**강의실(기본키)**</td>
+
 <td>**강의시간(기본키)**</td>
+
 </tr>
+
 <tr>
+
 <td>101호</td>
+
 <td>9시</td>
+
 </tr>
+
 <tr>
+
 <td>101호</td>
+
 <td>10시</td>
+
 </tr>
+
 <tr>
+
 <td>102호</td>
+
 <td>9시</td>
+
 </tr>
+
 		</table>
+
 	</column>
+
 	<column>
+
 		<table header-row="true">
+
 <tr>
+
 <td>**담당교수(기본키)**</td>
+
 <td>**강의실**</td>
+
 </tr>
+
 <tr>
+
 <td>김교수</td>
+
 <td>101호</td>
+
 </tr>
+
 <tr>
+
 <td>김교수</td>
+
 <td>101호</td>
+
 </tr>
+
 <tr>
+
 <td>이교수</td>
+
 <td>102호</td>
+
 </tr>
+
 		</table>
+
 	</column>
+
 </columns>
+
 ---
+
 ### 4NF: 제4정규형
+
 > BCNF를 만족하면서 다치종속을 제거한 정규형. <br>**다치종속**이란 기본키A에 대해 서로 독립적인 값들 B와 C가 묶여있는 형태다. 이는 관계 없는 속성들을 묶어두어 중복 값들이 계속 늘어날 수 있으니 쪼개어주는 것이다.
+
 잘못된 예시
+
 <table header-row="true">
+
 <tr>
+
 <td>**학생ID(PK)**</td>
+
 <td>**수강과목**</td>
+
 <td>**동아리**</td>
+
 </tr>
+
 <tr>
+
 <td>1001</td>
+
 <td>데이터베이스</td>
+
 <td>연극동아리</td>
+
 </tr>
+
 <tr>
+
 <td>1001</td>
+
 <td>데이터베이스</td>
+
 <td>사진동아리</td>
+
 </tr>
+
 <tr>
+
 <td>1001</td>
+
 <td>알고리즘</td>
+
 <td>연극동아리</td>
+
 </tr>
+
 <tr>
+
 <td>1001</td>
+
 <td>알고리즘</td>
+
 <td>사진동아리</td>
+
 </tr>
+
 </table>
+
 옳은 예시(정규화 후)
+
 <columns>
+
 	<column>
+
 		<table header-row="true">
+
 <tr>
+
 <td>**학생ID**</td>
+
 <td>**수강과목**</td>
+
 </tr>
+
 <tr>
+
 <td>1001</td>
+
 <td>데이터베이스</td>
+
 </tr>
+
 <tr>
+
 <td>1001</td>
+
 <td>알고리즘</td>
+
 </tr>
+
 		</table>
+
 	</column>
+
 	<column>
+
 		<table header-row="true">
+
 <tr>
+
 <td>**학생ID**</td>
+
 <td>**동아리**</td>
+
 </tr>
+
 <tr>
+
 <td>1001</td>
+
 <td>연극동아리</td>
+
 </tr>
+
 <tr>
+
 <td>1001</td>
+
 <td>사진동아리</td>
+
 </tr>
+
 		</table>
+
 	</column>
+
 </columns>
+
 쪼개어 다치종속을 제거한다.
+
 ---
-<empty-block/>
-<empty-block/>
+
 #### 1번
 ```sql
 show tables;
@@ -1564,8 +2001,9 @@ select * from tbl_buy_copy3;
 
 ```
 #### 1번 문제 풀기 {toggle="true"}
+
 	01\~04 문제 풀기
-	<empty-block/>
+
 	```sql
 -- 문제 1
 select * from buytbl;
@@ -1594,7 +2032,7 @@ select * from buytbl where groupname !='';
 select * from buytbl where groupname <>'';
 select * from buytbl where groupname is not null;
 	```
-	<empty-block/>
+
 	05 문제풀기
 	```sql
 -- 문제2
@@ -1612,7 +2050,7 @@ select amount from buytbl where userID like 'K%';
 select * from buytbl where price > all (select price from buytbl where amount ='5');
 select price from buytbl where amount ='5';
 	```
-	<empty-block/>
+
 	06\~09 문제풀기
 	```sql
 -- 문제3
@@ -1640,8 +2078,9 @@ select * from buytbl where amount >= 3 order by prodName desc;
 create table Cusertbl (select * from usertbl where addr in ('서울','경기'));
 select * from Cusertbl;
 	```
-	<empty-block/>
+
 ---
+
 #### 2번
 ```sql
 use shopdb;
@@ -1673,7 +2112,6 @@ select userid, truncate(avg(amount*price),2)  as '구매평균액' from buytbl g
 select max(height) from usertbl;
 select min(height) from usertbl;
 
-
 -- =========================================
 -- 02 select group by + having
 -- =========================================
@@ -1686,7 +2124,6 @@ from buytbl
 group by userid
 having sum(amount) >= 5; -- 여기서 where절 사용 불가해 having 사용
 -- having 구매총량 >= 5; -- 이렇게도 사용 가능
-
 
 -- + GROUP BY (지역별 구매총량)
 select addr, sum(amount) as '구매총량' -- 원하는 컬럼 지정
@@ -1729,7 +2166,6 @@ select userid, truncate(avg(amount*price),2)  as '구매평균액' from buytbl g
 select max(height) from usertbl;
 select min(height) from usertbl;
 
-
 -- =========================================
 -- 02 select group by + having
 -- =========================================
@@ -1742,10 +2178,6 @@ from buytbl
 group by userid
 having sum(amount) >= 5; -- 여기서 where절 사용 불가해 having 사용
 -- having 구매총량 >= 5; -- 이렇게도 사용 가능
-
-
-
-
 
 ```
 #### 2번 문제 풀기 {toggle="true"}
@@ -1791,6 +2223,7 @@ select Countrycode,sum(Population) from city group by Countrycode;
 select Continent,avg(LifeExpectancy) from country group by Continent;
 	```
 ---
+
 #### 3번
 ```sql
 -- INSERT
@@ -1808,7 +2241,6 @@ insert ignore into tbl_buy_2 values(1, 'aaa','운동화',1);
 insert ignore into tbl_buy_2 values(1, 'bbb','냉장고',4);
 insert ignore into tbl_buy_2 values(3, 'ccc','세탁기',3);
 
-
 delete from tbl_buy_2;
 select * from tbl_buy_2;
 
@@ -1824,7 +2256,6 @@ select auto_increment from information_schema.tables where table_schema='shopdb'
 -- 마지막으로 성공한 auto_increment 확인
 select last_insert_id();
 
-
 -- AUTO INCREMENT 초기화
 
 delete from tbl_buy_2;
@@ -1832,9 +2263,6 @@ alter table tbl_buy_2 auto_increment = 1;
 insert ignore into tbl_buy_2 values(null, 'aaa','운동화',1);  -- delete로 초기화 x
 
 select * from tbl_buy_2;
-
-
-
 
 insert ignore into tbl_buy_2 values(null, 'aaa','운동화',1);  -- delete로 초기화 x
 
@@ -1844,7 +2272,7 @@ alter table tbl_buy_2 AUTO_INCREMENT = 1;
 insert ignore into tbl_buy_2 values(null, 'aaa','운동화',1) on duplicate key update amount=amount+1;
 select * from tbl_buy_2;
 ```
-<empty-block/>
+
 #### 4번
 ```sql
 -- ------------------------------
@@ -1984,7 +2412,6 @@ alter table tbl_test1 drop index FK_tbl_test1_tbl_a;
 -- FK명 모를 때 확인
 show create table tbl_test2;
 
-
 -- PK -FK 설정 시 PK 열의 테이블 삭제 x -> 정상삭제
 drop table tbl_c; -- x FK 테이블이기 때문에 삭제 불가
 drop table tbl_test4; -- FK 테이블 삭제 진행
@@ -2090,6 +2517,7 @@ alter table tbl_test09 alter column age drop default;
 desc tbl_test09;
 ```
 ---
+
 #### 5. 변수&형변환
 ```sql
 -- ------------------
@@ -2148,6 +2576,7 @@ select 2 > '1a1bcd'; -- 1 T. 1뒤 다버리므로 2>1 은 T
 select 0 = 'mega'; -- 1 T. mega는 숫자 없으므로 0처리되니 0=0 은 T
 ```
 ---
+
 #### 6. 내장함수
 ```sql
 -- ---------------------
@@ -2248,6 +2677,7 @@ select replace(curtime(),':','|') ;
 select concat(replace(curdate(),'-','#')," ",replace(curtime(),':','|'));
 ```
 ---
+
 #### 7. 업로드 다운로드
 ```sql
 create database testdb;
@@ -2278,8 +2708,9 @@ select * from tbl_file;
 select filedata from tbl_file where title='test1.exe'
 into dumpfile 'c:\\sql\\test1_copy.exe';
 ```
-<empty-block/>
+
 ---
+
 #### 8. INDEX
 ```sql
 -- -----------------
@@ -2308,8 +2739,6 @@ into dumpfile 'c:\\sql\\test1_copy.exe';
 -- 보조(Secondary) 인덱스	: PK이외 다른 제약조건이나 수동으로 설정시 적용 [기본 : B-Tree]
 -- 						: 한테이블에 여러 Index를 생성
 
-
-
 -- 01 제약조건 PK 설정시 unique index 확인
 use testdb;
 create table tbl_a(     	-- 기본키: 중복 불가, NULL 불가
@@ -2325,7 +2754,6 @@ show index from tbl_a;  -- 생성된 인덱스 목록 테이블 형태 출력
 insert into tbl_a values(5,1);
 insert into tbl_a values(3,1);
 select * from tbl_a;
-
 
 -- 02 제약조건 unique 설정시 unique index 확인
 create table tbl_b
@@ -2404,8 +2832,6 @@ create table tbl_f
 );
 show index from tbl_f; -- 인덱스 확인
 
-
-
 -- --------------------------------
 -- Index 성능확인
 -- --------------------------------
@@ -2418,9 +2844,9 @@ show index from employees.salaries;							-- 인덱스 확인
 alter table employees.salaries drop index to_date_idx;		-- 인덱스 삭제
 SELECT * FROM employees.salaries where to_date = '1986-12-01';  -- 다시 조회
 ```
-<empty-block/>
+
 ---
-<empty-block/>
+
 #### 9. JOIN
 ```sql
 create database testdb;
@@ -2444,7 +2870,6 @@ use testdb;
 --   FULL OUTER JOIN: 양쪽 테이블 전체 (MySQL은 직접 지원하지 않음 → UNION으로 구현)
 -- CROSS JOIN: 모든 행끼리 조인 (조건 없음)
 -- SELF JOIN: 자기 자신 테이블을 조인
-
 
 -- 설명:
 -- INNER JOIN: 교집합.
@@ -2541,7 +2966,7 @@ on DE.dept_no = D.dept_no -- 부서번호 기준 실제 부서 이름 조인
 limit 100;
 
 ```
-<empty-block/>
+
 #### 9번 문제 {toggle="true"}
 	```sql
 -- 문제
@@ -2571,7 +2996,6 @@ from usertbl U
 inner join buytbl B
 on U.userID = B.userID
 where groupNAme = '전자';
-
 
 -- 문제
 -- WORLD DB진행
@@ -2604,8 +3028,9 @@ on C.Code = CL.countryCode
 order by C.name asc
 ;
 	```
-	<empty-block/>
+
 ---
+
 #### 10. VIEW
 ```sql
 -- ---------------------------
@@ -2717,10 +3142,10 @@ insert into tbl_b values(2,20);
 insert into view_a_b (col1) values(3);
 insert into view_a_b (col3) values(4);
 
-
 ```
-<empty-block/>
+
 ---
+
 #### 11. JSON
 ```sql
 -- ----------------------
@@ -2820,8 +3245,9 @@ select json_search(json_extract(@중구맛집,'$[*].BZ_NM'),'all','%초밥%');
 select json_search(json_extract(@중구맛집,'$[*].BZ_NM'),'all','%베이커리%');
 select json_extract(@중구맛집,'$[61].BZ_NM');
 ```
-<empty-block/>
+
 ---
+
 #### 12.Pivot
 ```sql
 use shopdb;
@@ -2842,7 +3268,6 @@ from buytbl
 group by userid -- userid로 그룹화
 -- with rollup: group by로 묶인 데이터의 부분합계와 총 합계를 계산해준다.
 with rollup; 
-
 
 select * from buytbl;
 select userid,
@@ -2884,6 +3309,7 @@ from usertbl;
 select * from usertbl;
 ```
 ---
+
 #### 13. Procedure
 ```sql
 -- -------------------
@@ -3012,7 +3438,6 @@ delimiter ;
 call pro4(4,0);
 call pro4(4,1);
 
-
 drop procedure pro5;
 delimiter $$
 create procedure pro5()
@@ -3029,7 +3454,6 @@ set @avr=(select avg(amount*price) from buytbl);
 select @avr;
 select *,price*amount,if(price*amount>=@avr,'평균이상','평균이하') as '평균이상/이하' from buytbl;
 
-
 -- 문제
 -- usertbl에서 출생년도를 입력받아 해당 출생년도보다 나이가 많은 행만 출력
 -- birthyear열을 이용
@@ -3043,7 +3467,6 @@ end $$
 delimiter ;
 
 call older(1990);
-
 
 -- 문제
 -- 근태일 , 가입일로부터 지난일 구하기(usertbl)
@@ -3098,8 +3521,6 @@ call  add_age();
 use classicmodels;
 select * from employees;
 
-
-
 -- -------------------
 -- 인자 2개  
 -- -------------------
@@ -3113,8 +3534,6 @@ delimiter ;
 
 call proc6(170,180);
 
-
-
 select 
 *,
 case 
@@ -3124,8 +3543,6 @@ case
     else '구매없음'
 end as 'GRADE'
 from buytbl;
-
-
 
 delimiter $$
 create procedure proc7(in arg1 int , in arg2 int,in arg3 int)
@@ -3144,8 +3561,6 @@ end $$;
 delimiter ;
 
 call proc7(5,3,1);
-
-
 
 -- -------------------
 -- 프로시저 + 반복문
@@ -3209,7 +3624,6 @@ delimiter ;
 
 call proc_while_03();
 
-
 -- 1-N합
 
 -- N-M합(N<M)
@@ -3217,7 +3631,7 @@ call proc_while_03();
 -- 구구단 2단 출력
 -- 구구단 N단 출력(N<=9)
 ```
-<empty-block/>
+
 #### 14. transaction
 ```sql
 create table  if not exists  tbl_test(
@@ -3256,10 +3670,7 @@ start transaction;
 
 select * from tbl_test;
 
-
-
 -- AUTOCOMMIT 모드 비활성화
-
 
 drop procedure Tx_Test;
 DELIMITER $$
@@ -3285,6 +3696,7 @@ show procedure status;
 select * from tbl_test;
 ```
 ---
+
 #### 15. exception
 ```sql
 -- 예외발생
@@ -3310,7 +3722,6 @@ delimiter ;
 
 call Exception_Test02();
 
-
 show errors;
 -- 03 모든 예외 받기..
 delimiter $$
@@ -3327,7 +3738,6 @@ end $$
 delimiter ;
 
 call Exception_Test03();
-
 
 -- 04 예외코드 확인
 drop procedure Exception_Test04;
@@ -3347,7 +3757,6 @@ begin
 end $$
 delimiter ;
 call Exception_Test04();
-
 
 -- 05 Error_log 기록하는 테이블처리
 
@@ -3425,6 +3834,7 @@ delimiter ;
 call tbl_std_proc_tx();
 ```
 ---
+
 #### 16. trigger
 ```sql
 use shopdb;
@@ -3440,7 +3850,6 @@ alter table c_usertbl_bak add column U_D_date char(5);
 alter table c_usertbl_bak change column U_D_date U_D_date datetime;
 desc c_usertbl_bak;
 select * from c_usertbl_bak;
-
 
 delimiter $$
 create trigger trg_c_usertbl_update
@@ -3462,7 +3871,6 @@ select * from c_usertbl;
 select * from c_usertbl_bak;
 update c_usertbl set name='바비' where userid='BBK';
 update c_usertbl set addr='경남' where userid='EJW';
-
 
 -- 02 삭제 트리거
 delimiter $$
@@ -3487,4 +3895,3 @@ select * from c_usertbl_bak;
 -- c_buytbl의 update시 c_buytbl_bak에 내용저장되는 trg_c_buytbl_update 트리거 만들기
 -- c_buytbl의 delete시 c_buytbl_bak에 내용저장되는 trg_c_buytbl_delete 트리거 만들기
 ```
-<empty-block/>

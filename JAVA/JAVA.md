@@ -1,12 +1,17 @@
-<empty-block/>
-<empty-block/>
 레파지토리 만들고 깃클론한 폴더 이클립스로 연 뒤 자바 프로젝트 생성
+
 ![](images/image1.png)
+
 ![](images/image2.png)
+
 ![](images/image3.png)
+
 new-class
+
 ![](images/image4.png)
+
 ![](images/image5.png)
+
 ### C01SystemOut.java
 ```javascript
 package Ch00; 				// 패키지명
@@ -42,18 +47,25 @@ public class HelloWorld {	// class 선언부 - 객체지향 문법 적용영역
  	// 한줄 삭제: ctrl + d
 ```
 ---
-<empty-block/>
-<empty-block/>
-<empty-block/>
+
 ![](images/image6.png)
+
 ![](images/image7.png)
+
 ### <span color="red">중요!</span>
+
 <callout>
+
 	2진수: 0과 1만 사용해 수를 표현하며 2n단위로 자릿수를 이동한다.(1,2,4,8...)<br>비트(Bit): 2진수의 한자리(0또는 1)를 나타내는 정보의 최소 단위<br>즉, 7: 111이 되면 3자리가 꽉 찼으므로 모두 올림되어 8: 1000 4자리가 가 된다.<br><br>16진수(Hex): 0\~9까지의 숫자와 A\~F(대문자/소문자)까지의 알파벳 6개를 포함하여 총 16개의 기호로 수를 표현한다. 2진수를 줄여 쓸 수 있다.
+
 	**2진수 → 10진수 변환(가중치 계산)**<br>1  	 1  	 1	  1  	  1	  1  	  1	  1<br>\*	 \*	 \*	  \*	  \*	  \*	  \*  	  \*<br>2\^7	 2\^6	 2\^5	  2\^4  2\^3  2\^2  2\^1 2\^0<br>128	 64	 32	 16	  8	   4	   2	  1
+
 	ex)<br>2진수 - \> 10진수<br>10101100 = 128 + 32 + 8 + 4<br>10011010 = 128 + 16 + 8 + 2
+
 	10진수 -\> 2진수<br>192 -\> 11000000<br>224 -\> 11100000
+
 </callout>
+
 ### C02진수
 ```javascript
 package Ch01;
@@ -139,8 +151,6 @@ public class C02진수 {
 		// 12  -> 00001100
 		// 15  -> 00001111
 
-
-
 		// %d : 10진수 서식문자
 		// %o : 8진수 서식문자
 		// %x : 16진수 서식문자
@@ -165,15 +175,23 @@ public class C02진수 {
 }
 ```
 ### <span color="red">중요!</span>
+
 <callout>
+
 	JAVA에서<br>부호가 있는 타입(signed): byte, short, int, long<br>부호가 없는 타입(unsigned): **char**
+
 	숫자를 해석하는 자료형이 부호가 있는 타입(signed)이면 맨 앞이 0이면 양수(+), 맨 앞이 1이면 음수(-)라 약속되어 있다. 부호가 없는 타입(unsigned)은 맨 앞 비트도 숫자의 크기를 나타내며 1로 시작해도 큰 양수일 뿐이다.
+
 	---
+
 	보수: 보충해주는 수. 작은 수 A를 큰 수 B로 만들기 위해 채워야 하는 차액.<br>보수의 종류<br>1의 보수: 모든 비트를 반전시킨 것 (0 -\> 1, 1 -\> 0).<br>2의 보수: 1의 보수에 1을 더한 것. 
+
 	**음수변환: -B = B의 2의 보수**
+
 	**뺄셈: (A - B) = A + (B의 2의 보수)**
+
 </callout>
-<empty-block/>
+
 ### 03음수
 ```javascript
 package Ch01;
@@ -247,7 +265,7 @@ public class C03음수 {
 }
 
 ```
-<empty-block/>
+
 ### 04 변수_자료형
 ```javascript
 	/* 		
@@ -276,7 +294,6 @@ public class C03음수 {
 		System.out.println(num3);	
 		// num3안의 값을 println메서드로 전달해서 내부적으로 표준출력 처리	
 		*/
-
 
 		/* 
 			Data(수, 자료): 선저장 / 후처리
@@ -331,7 +348,6 @@ public class C05변수_자료형 {
 		// 자동 형변환: 데이터 타입의 크기(Byte)가 더 크거나, 표현할 수 있는 값의 범위가 더 넓은 쪽으로 옮겨갈 때 발생 
 		// 데이터 손실 가능성이 있을 경우 형변환해주지 않는다.
 
-
 		char n10 = 65535;	// (0 ~ 2^16  -1)	(0~65535)
 		short n11 = 32767; 	// (-2^15 ~ +2^15  -1)	(-32768 ~ +32767)
 
@@ -357,14 +373,11 @@ public class C05변수_자료형 {
 		// int범위: (-21억 ~ +21억)
 		// L,l : long형 접미사
 
-
 		long n16 = 2150000000L; 	// 21.5억. L,l (리터럴 접미사): long 자료형 사용하여 값 저장
 		long n17 = 20;			// int 20을 자동 형변환하여 대입함
 		
 		long n18 = 10000000000L; 	
 		long n19 = 1000000000;
-
-
 
 		// --------------------------------------
 		// 실수
@@ -395,7 +408,6 @@ public class C05변수_자료형 {
 
 		// 고정 소수점: 빠른 저장, 메모리 공간 낭비
 		// 부동소수점(기본값): 비교적 느린 저장, 메모리 공간 효율
-
 
 		// --------------------------------------
 		// 단일 문자 char 2byte 정수
@@ -436,7 +448,6 @@ public class C05변수_자료형 {
 		System.out.printf("%c\n", '갃');	
 
 		System.out.println("----------------------------");
-
 
 		// --------------------------------------
 		// boolean: 논리형(true/false 저장)
@@ -488,7 +499,7 @@ public class C05변수_자료형 {
 
 }
 ```
-<empty-block/>
+
 ### 06 상수
 ```javascript
 package Ch01;
@@ -514,11 +525,10 @@ public class C06상수 {
     
      double result = PI*4*4;
 
-
     }
 }
 ```
-<empty-block/>
+
 ### 07 정리문제
 ```javascript
 /* 확인 문제1
@@ -536,7 +546,6 @@ public class C06상수 {
 	논리타입
 	1byte : boolean 
 
-
 	확인문제2
 	맞는 코드인지 틀린 코드인지 확인 
 	byte var = 200;						    ( X	) // 127이상이라
@@ -551,8 +560,9 @@ public class C06상수 {
 	float = 1e2f;	 						    ( O	) 
 */
 ```
-<empty-block/>
+
 ## Ch02
+
 ### C01TypeChange
 ```javascript
 package Ch02;
@@ -632,7 +642,7 @@ public class C02TypeChange {
 
 }
 ```
-<empty-block/>
+
 ### C03TypeChange
 ```javascript
 package Ch02;
@@ -651,11 +661,3 @@ public class C03TypeChange {
 }
 
 ```
-<empty-block/>
-<empty-block/>
-<empty-block/>
-<empty-block/>
-<empty-block/>
-<empty-block/>
-<empty-block/>
-<empty-block/>

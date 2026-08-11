@@ -1,6 +1,7 @@
 ### C02While.java
-<empty-block/>
+
 ### 구구단
+
 #### 1 - 9단 출력
 ```java
 		int dan = 1;      // 시작 단 수 결정
@@ -17,7 +18,7 @@
 			dan++;
 		}
 ```
-<empty-block/>
+
 #### n - 9단 출력
 ```java
 		Scanner sc = new Scanner(System.in); 
@@ -36,7 +37,7 @@
 		}
 		sc.close();
 ```
-<empty-block/>
+
 #### n - m단 출력
 ```java
 		Scanner sc = new Scanner(System.in);
@@ -64,7 +65,7 @@
 		}
 		sc.close();
 ```
-<empty-block/>
+
 #### n - m단 반전 출력
 ```java
 		Scanner sc = new Scanner(System.in);
@@ -92,7 +93,7 @@
 		}
 		sc.close();
 ```
-<empty-block/>
+
 #### 1 - 9단 가로 출력 (개인학습)
 ```java
     int i = 1;
@@ -108,11 +109,11 @@
         i++; // x1~9까지 반복
     }
 ```
-<empty-block/>
+
 ---
-<empty-block/>
+
 ### 별찍기
-<empty-block/>
+
 #### 고정높이 별
 ```java
 // *****
@@ -132,8 +133,3 @@
         i++;
     }
 ```
-<empty-block/>
-<empty-block/>
-<empty-block/>
-<empty-block/>
-<empty-block/>

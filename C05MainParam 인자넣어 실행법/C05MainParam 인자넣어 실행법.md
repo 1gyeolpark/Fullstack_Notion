@@ -1,9 +1,11 @@
 ![](images/image1.png)
+
 ![](images/image2.png)
+
 ![](images/image3.png)
-<empty-block/>
+
 터미널로 하는 법
-<empty-block/>
+
 ```shell
 
 cd ..
